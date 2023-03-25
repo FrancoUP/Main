@@ -326,16 +326,16 @@ async function setNews(){
     anchor2.setAttribute("href",`${news.articles[0].url}`);
     b2.setAttribute("href",`${news.articles[0].url}`);
 
-    im1.setAttribute("src",`${news.articles[9].image}`);
-    if(+news.articles[9].title.length > 75){
-      const title = news.articles[9].title.split("");
+    im1.setAttribute("src",`${news.articles[1].image}`);
+    if(+news.articles[1].title.length > 75){
+      const title = news.articles[1].title.split("");
       title.length = 75;
       anchor1.innerHTML = `${title.join("")}...`;
     } else {
-      anchor1.innerHTML = news.articles[9].title;
+      anchor1.innerHTML = news.articles[1].title;
     }
-    anchor1.setAttribute("href",`${news.articles[9].url}`);
-    b1.setAttribute("href",`${news.articles[9].url}`);
+    anchor1.setAttribute("href",`${news.articles[1].url}`);
+    b1.setAttribute("href",`${news.articles[1].url}`);
 
     im3.setAttribute("src",`${news.articles[2].image}`);
     if(+news.articles[2].title.length > 75){
@@ -348,16 +348,16 @@ async function setNews(){
     anchor3.setAttribute("href",`${news.articles[2].url}`);
     b3.setAttribute("href",`${news.articles[2].url}`);
 
-    im4.setAttribute("src",`${news.articles[4].image}`);
-    if(+news.articles[4].title.length > 75){
-      const title = news.articles[4].title.split("");
+    im4.setAttribute("src",`${news.articles[3].image}`);
+    if(+news.articles[3].title.length > 75){
+      const title = news.articles[3].title.split("");
       title.length = 75;
       anchor4.innerHTML = `${title.join("")}...`;
     } else {
-      anchor4.innerHTML = news.articles[4].title;
+      anchor4.innerHTML = news.articles[3].title;
     }
-    anchor4.setAttribute("href",`${news.articles[4].url}`);
-    b4.setAttribute("href",`${news.articles[4].url}`);
+    anchor4.setAttribute("href",`${news.articles[3].url}`);
+    b4.setAttribute("href",`${news.articles[3].url}`);
 
     // console.log(news.articles);
   } catch(err) {
