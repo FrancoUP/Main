@@ -28,6 +28,11 @@ const anchor4 = document.querySelector(".a4");
 const im1 = document.querySelector(".im1");
 const anchor1 = document.querySelector(".a1");
 const tite = document.querySelector(".tite");
+const b1 = document.querySelector(".b1");
+const b2 = document.querySelector(".b2");
+const b3 = document.querySelector(".b3");
+const b4 = document.querySelector(".b4");
+const cli = document.querySelector(".cli");
 let arrCities;
 
 async function fetchCity(luogo = "london"){
@@ -38,10 +43,10 @@ async function fetchCity(luogo = "london"){
 
     if(!cities.ok) throw new Error("Errore erroino in fetchCity");
 
-  return await cities.json();
-} catch(err) {
-  renderError(err.message); 
-}
+    return await cities.json();
+  } catch(err) {
+    renderError(err.message); 
+  }
 }
 
 async function fetchWeather(lat,long){
@@ -50,10 +55,21 @@ async function fetchWeather(lat,long){
 
     if(!london.ok) throw new Error("Errore erroino in fetchWeather");
 
-  return await london.json();
-} catch(err) {
-  renderError(err.message);
+    return await london.json();
+  } catch(err) {
+    renderError(err.message);
+  }
 }
+
+async function fetchNews(){
+  try{
+   const fet = await fetch("https://gnews.io/api/v4/search?q=example&apikey=23893c2c23ff740369a1fb22362320b9");
+   if(!fet.ok) throw new Error("Errore erroino in fetchNews");
+
+  return await fet.json();
+  } catch(err) {
+   renderError(err.message);
+  }
 }
 
 function intervallo(){
@@ -77,8 +93,6 @@ async function daysWeatherBar(index, pos){
   const tempo = await fetchWeather(latitude,longitude);
   if(!tempo) throw new Error("in fetchWeather");
 
-  // console.log(tempo.days);
-
   tempo.days.forEach( (e,i) => {
     const html = `
     <div class="giorno">
@@ -91,19 +105,18 @@ async function daysWeatherBar(index, pos){
       <div class="min${i}"></div>
       <div class="max${i}" style="font-weight: bold;"></div>
     </div>`;
+
   wow[i].insertAdjacentHTML("afterbegin", html);
-  // console.log(e);
+
   const d = new Date(e.datetime);
+
   document.querySelector(`.day${i}`).textContent = `${d.toLocaleDateString('en-UK', { weekday: 'short' })} ${e.datetime.split("").slice(-2).join("")}`;
   document.querySelector(`.min${i}`).textContent = `${Math.round((e.tempmin - 32) * (5 / 9))}°`;
   document.querySelector(`.max${i}`).textContent = `${Math.round((e.tempmax - 32) * (5 / 9))}°`;
   
 
-  const t = `${Math.round((e.temp - 32) * (5 / 9))}`;
-  // console.log(typeof +t);
-  // console.log(typeof e.precipprob);
-  if(+t > 0) {
-    // console.log(e.precipprob);
+  const t = +`${Math.round((e.temp - 32) * (5 / 9))}`;
+  if(t > 0) {
     if(e.precipprob >= 70) document.querySelector(`.icona-img${i}`).setAttribute("src", "icons/i5.png");
     else if(e.precipprob >= 40) document.querySelector(`.icona-img${i}`).setAttribute("src", "icons/i2.png");
     else document.querySelector(`.icona-img${i}`).setAttribute("src", "icons/i1.png");   
@@ -112,15 +125,6 @@ async function daysWeatherBar(index, pos){
     else if(e.precipprob >= 40) document.querySelector(`.icona-img${i}`).setAttribute("src", "icons/i7.png");
     else document.querySelector(`.icona-img${i}`).setAttribute("src", "icons/i1.png");
   }
-
-
-
-
-
-
-
-  // console.log(+e.cloudcover);
-  
   document.querySelector(`.icona-img${i}`).style.width = "45px";
   document.querySelector(`.icona-img${i}`).style.height = "45px";
   document.querySelector(`.min${i}`).style.color = "blue";
@@ -145,7 +149,7 @@ async function defaultPosition(){
       box10.textContent = `feelslike ${((tempo.currentConditions.feelslike - 32) * (5 / 9)).toFixed(1)}°`;
       box4.textContent = `humidity ${tempo.currentConditions.humidity}%`;
       box5.textContent = `wind speed ${(tempo.currentConditions.windspeed * 1.609344).toFixed(1)} km/h`;
-      box6.textContent = `rain fall ${tempo.currentConditions.precip}`;
+      box6.textContent = `rain fall ${tempo.currentConditions.precip} ml`;
       box7.textContent = `cloudcover ${tempo.currentConditions.cloudcover}%`;
       box8.textContent = `sunrise ${tempo.currentConditions.sunrise}`;
       box9.textContent = `sunset ${tempo.currentConditions.sunset}`;
@@ -163,13 +167,17 @@ async function defaultPosition(){
 defaultPosition();
 
 async function addHTML() {
-
-  const citiesJson = await fetchCity(search.value);
-  arrCities = citiesJson.locations.map( (e) => `${e.formattedAddress}, ${e.address.state}, ${e.address.countryName}`);
-  arrCities.forEach( (e,i) => {
-     const html = `<button class="nomiCitta" placeholder="${i}">${e}</button>`;
-     list.insertAdjacentHTML("beforeend", html);
+  try{
+    const citiesJson = await fetchCity(search.value);
+    if(!citiesJson) throw new Error("Errore erroino in fetchCity");
+    arrCities = citiesJson.locations.map( (e) => `${e.formattedAddress}, ${e.address.state}, ${e.address.countryName}`);
+    arrCities.forEach( (e,i) => {
+    const html = `<div class="nomiCitta"><div class="tes" placeholder="${i}">${e}</div></div>`;
+    list.insertAdjacentHTML("beforeend", html);
   })
+  } catch(err){
+     console.log(err.message);
+  } 
 }
 
 async function imgSelection(tem){
@@ -223,41 +231,36 @@ try{
   const tempo = await fetchWeather(latitude,longitude);
   if(!tempo) throw new Error("in fetchWeather");
   const {temp} = tempo.currentConditions;
-  // console.log(tempo.days);
-  // console.log(+tempo.currentConditions.sunrise.split("").slice(0,2).join(""));
-  // console.log(temp);
 
-
-  const ii = [...`${citiesJson.locations[index].address.state}, ${citiesJson.locations[index].address.countryName}`];
-  if(ii.length < 22) {
-    box1.textContent = ii.join(""); 
+  const country = [...`${citiesJson.locations[index].address.state}, ${citiesJson.locations[index].address.countryName}`];
+  if(country.length < 22) {
+    box1.textContent = country.join(""); 
   } else {
-    ii.length = 22;
-    box1.textContent = ii.join("") + "...";
+    country.length = 22;
+    box1.textContent = country.join("") + "...";
   }
 
-  const oo = [...citiesJson.locations[index].address.city];
-  if(oo.length < 22) {
-    box2.textContent = oo.join("");
+  const city = [...citiesJson.locations[index].address.city];
+  if(city.length < 22) {
+    box2.textContent = city.join("");
   } else {
-    oo.length = 22;
-    box2.textContent = oo.join("") + "...";
+    city.length = 22;
+    box2.textContent = city.join("") + "...";
   }
   
   box3.textContent = `${((temp - 32) * (5 / 9)).toFixed(1)}°`;
   box10.textContent = `feelslike ${((tempo.currentConditions.feelslike - 32) * (5 / 9)).toFixed(1)}°`;
   box4.textContent = `humidity ${tempo.currentConditions.humidity}%`;
   box5.textContent = `wind speed ${(tempo.currentConditions.windspeed * 1.609344).toFixed(1)} km/h`;
-  box6.textContent = `rain fall ${tempo.currentConditions.precip}`;
+  box6.textContent = `rain fall ${tempo.currentConditions.precip} ml`;
   box7.textContent = `cloudcover ${tempo.currentConditions.cloudcover}%`;
   box8.textContent = `sunrise ${tempo.currentConditions.sunrise}`;
   box9.textContent = `sunset ${tempo.currentConditions.sunset}`;
 
   setInterval(intervallo, 10);
 
-
   imgSelection(tempo);
-  //img.src = "cloudy5.jpg"; 
+
   daysWeatherBar(index, search.value);
 
   list.innerHTML = '';
@@ -297,18 +300,13 @@ search.addEventListener("keypress", function(e) {
   }
 })
 
+cli.addEventListener("click",function(){
+  list.classList.remove("hidden");
+})
 
 
-async function fetchNews(){
-   try{
-    const fet = await fetch("https://gnews.io/api/v4/search?q=example&apikey=23893c2c23ff740369a1fb22362320b9");
-    if(!fet.ok) throw new Error("Errore erroino in fetchNews");
 
-   return await fet.json();
-   } catch(err) {
-    renderError(err.message);
-   }
-}
+
 
 
 
@@ -326,16 +324,18 @@ async function setNews(){
       anchor2.innerHTML = news.articles[0].title;
     }
     anchor2.setAttribute("href",`${news.articles[0].url}`);
+    b2.setAttribute("href",`${news.articles[0].url}`);
 
-    im1.setAttribute("src",`${news.articles[1].image}`);
-    if(+news.articles[1].title.length > 75){
-      const title = news.articles[1].title.split("");
+    im1.setAttribute("src",`${news.articles[9].image}`);
+    if(+news.articles[9].title.length > 75){
+      const title = news.articles[9].title.split("");
       title.length = 75;
       anchor1.innerHTML = `${title.join("")}...`;
     } else {
-      anchor1.innerHTML = news.articles[1].title;
+      anchor1.innerHTML = news.articles[9].title;
     }
-    anchor1.setAttribute("href",`${news.articles[1].url}`);
+    anchor1.setAttribute("href",`${news.articles[9].url}`);
+    b1.setAttribute("href",`${news.articles[9].url}`);
 
     im3.setAttribute("src",`${news.articles[2].image}`);
     if(+news.articles[2].title.length > 75){
@@ -346,6 +346,7 @@ async function setNews(){
       anchor3.innerHTML = news.articles[2].title;
     }
     anchor3.setAttribute("href",`${news.articles[2].url}`);
+    b3.setAttribute("href",`${news.articles[2].url}`);
 
     im4.setAttribute("src",`${news.articles[4].image}`);
     if(+news.articles[4].title.length > 75){
@@ -356,6 +357,7 @@ async function setNews(){
       anchor4.innerHTML = news.articles[4].title;
     }
     anchor4.setAttribute("href",`${news.articles[4].url}`);
+    b4.setAttribute("href",`${news.articles[4].url}`);
 
     // console.log(news.articles);
   } catch(err) {
