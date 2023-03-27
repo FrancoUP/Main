@@ -272,10 +272,11 @@ try{
 }
 
 
-searchBtn.addEventListener("click", function(){
-  addHTML(search.value);
-  list.classList.add("hidden");
-} );
+// searchBtn.addEventListener("click", function(e){
+//   console.log(e.target === this);
+//   addHTML(search.value);
+//   list.classList.add("hidden");
+// } );
 
 
 search.addEventListener("input", function(){
@@ -286,7 +287,7 @@ search.addEventListener("input", function(){
 
 
 list.addEventListener("click",function(e) {
-   wow.forEach( (e,i) => {
+   wow.forEach( (_,i) => {
     wow[i].innerHTML = "";
    })
    
@@ -300,10 +301,22 @@ search.addEventListener("keypress", function(e) {
   }
 })
 
-cli.addEventListener("click",function(){
-  list.classList.remove("hidden");
+
+cli.addEventListener("click",function(e){
+  const pressed = e.target.getAttribute("class");
+  // console.log(pressed);
+  // console.log(pressed === "btn-search");
+  if(pressed === "btn-search") {
+    addHTML(search.value);
+    list.classList.add("hidden");
+    list.innerHTML = '';
+  } else {
+    list.classList.remove("hidden");
+  }
 })
 
+
+// Fare toggle quando presso con il puntatore del mouse sulla search bar, usare l'if per la serch bar vuota
 
 
 
@@ -315,49 +328,57 @@ async function setNews(){
     const news = await fetchNews();
     if(!news) throw new Error("Errore erroino in fetchNews");
 
-    im2.setAttribute("src",`${news.articles[0].image}`);
-    if(+news.articles[0].title.length > 75){
-      const title = news.articles[0].title.split("");
+    im2.setAttribute("src",`${news.articles[5].image}`);
+    if(+news.articles[5].title.length > 75){
+      const title = news.articles[5].title.split("");
       title.length = 75;
       anchor2.innerHTML = `${title.join("")}...`;
+      anchor2.style.fontSize = "calc(12px + 0.75vw)";
     } else {
-      anchor2.innerHTML = news.articles[0].title;
+      anchor2.innerHTML = news.articles[5].title;
+      anchor2.style.fontSize = "calc(12px + 0.75vw)";
     }
-    anchor2.setAttribute("href",`${news.articles[0].url}`);
-    b2.setAttribute("href",`${news.articles[0].url}`);
+    anchor2.setAttribute("href",`${news.articles[5].url}`);
+    b2.setAttribute("href",`${news.articles[5].url}`);
 
-    im1.setAttribute("src",`${news.articles[1].image}`);
-    if(+news.articles[1].title.length > 75){
-      const title = news.articles[1].title.split("");
+    im1.setAttribute("src",`${news.articles[9].image}`);
+    if(+news.articles[9].title.length > 75){
+      const title = news.articles[9].title.split("");
       title.length = 75;
       anchor1.innerHTML = `${title.join("")}...`;
+      anchor1.style.fontSize = "calc(12px + 0.75vw)";
     } else {
-      anchor1.innerHTML = news.articles[1].title;
+      anchor1.innerHTML = news.articles[9].title;
+      anchor1.style.fontSize = "calc(12px + 0.75vw)";
     }
-    anchor1.setAttribute("href",`${news.articles[1].url}`);
-    b1.setAttribute("href",`${news.articles[1].url}`);
+    anchor1.setAttribute("href",`${news.articles[9].url}`);
+    b1.setAttribute("href",`${news.articles[9].url}`);
 
     im3.setAttribute("src",`${news.articles[2].image}`);
     if(+news.articles[2].title.length > 75){
       const title = news.articles[2].title.split("");
       title.length = 75;
       anchor3.innerHTML = `${title.join("")}...`;
+      anchor3.style.fontSize = "calc(12px + 0.75vw)";
     } else {
       anchor3.innerHTML = news.articles[2].title;
+      anchor3.style.fontSize = "calc(12px + 0.75vw)";
     }
     anchor3.setAttribute("href",`${news.articles[2].url}`);
     b3.setAttribute("href",`${news.articles[2].url}`);
 
-    im4.setAttribute("src",`${news.articles[3].image}`);
-    if(+news.articles[3].title.length > 75){
-      const title = news.articles[3].title.split("");
+    im4.setAttribute("src",`${news.articles[4].image}`);
+    if(+news.articles[4].title.length > 75){
+      const title = news.articles[4].title.split("");
       title.length = 75;
       anchor4.innerHTML = `${title.join("")}...`;
+      anchor4.style.fontSize = "calc(12px + 0.75vw)";
     } else {
-      anchor4.innerHTML = news.articles[3].title;
+      anchor4.innerHTML = news.articles[4].title;
+      anchor4.style.fontSize = "calc(12px + 0.75vw)";
     }
-    anchor4.setAttribute("href",`${news.articles[3].url}`);
-    b4.setAttribute("href",`${news.articles[3].url}`);
+    anchor4.setAttribute("href",`${news.articles[4].url}`);
+    b4.setAttribute("href",`${news.articles[4].url}`);
 
     // console.log(news.articles);
   } catch(err) {
