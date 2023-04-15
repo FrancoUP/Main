@@ -110,7 +110,9 @@ async function daysWeatherBar(index, pos){
 
   const d = new Date(e.datetime);
 
-  document.querySelector(`.day${i}`).textContent = `${d.toLocaleDateString('en-UK', { weekday: 'short' })} ${e.datetime.split("").slice(-2).join("")}`;
+  if(i === 0) document.querySelector(`.day${i}`).textContent = "Today";
+  else document.querySelector(`.day${i}`).textContent = `${d.toLocaleDateString('en-UK', { weekday: 'short' })} ${e.datetime.split("").slice(-2).join("")}`;
+    
   document.querySelector(`.min${i}`).textContent = `${Math.round((e.tempmin - 32) * (5 / 9))}°`;
   document.querySelector(`.max${i}`).textContent = `${Math.round((e.tempmax - 32) * (5 / 9))}°`;
   
