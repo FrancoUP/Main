@@ -1448,15 +1448,19 @@ window.addEventListener("keydown", function (e) {
   
   if(e.key === "ArrowLeft") {
     setLeft();
+    if(chiave) setTimeout(newRandomSpotNumber, 150);
   }
   if(e.key === "ArrowRight") {
     setRight();
+    if(chiave) setTimeout(newRandomSpotNumber, 150);
   }
   if(e.key === "ArrowUp") {
     setUp();
+    if(chiave) setTimeout(newRandomSpotNumber, 150);
   }
   if(e.key === "ArrowDown") {
     setDown();
+    if(chiave) setTimeout(newRandomSpotNumber, 150);
   }
   
   if(chiave) setTimeout(newRandomSpotNumber, 150);
