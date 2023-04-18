@@ -1462,8 +1462,6 @@ window.addEventListener("keydown", function (e) {
     setDown();
     if(chiave) setTimeout(newRandomSpotNumber, 150);
   }
-  
-  if(chiave) setTimeout(newRandomSpotNumber, 150);
 })
 
 new_game.addEventListener("click", function(){
