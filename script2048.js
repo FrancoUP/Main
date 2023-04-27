@@ -9,7 +9,7 @@ const main = document.querySelector(".main-square");
 let score = 0;
 let best_score = 0;
 let chiave = true;
-const freq = 9;
+const freq = 7;
 const timeRandomNum = 200;
 let w = true;
 
