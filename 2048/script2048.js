@@ -13,6 +13,7 @@ let chiave = true;
 const freq = 7;
 const timeRandomNum = 50;
 let w = true;
+let interruttoreGenerale = false;
 
 function setNumberSize(num, cel){
   if(num < 9 ) {
@@ -457,7 +458,7 @@ function newRandomSpotNumber(){
 window.addEventListener("keydown", function (e) {
     e.preventDefault();
 
-    if(w){
+    if(w && interruttoreGenerale){
 
       w = false;
 
@@ -496,6 +497,7 @@ new_game.addEventListener("click", function(){
 btn_under.addEventListener("click", function(){
    agree.classList.add("hidden-agree");
    base.classList.add("hidden-agree");
+  interruttoreGenerale = true;
 })
 
 
