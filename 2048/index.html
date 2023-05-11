@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    
+    <!-- Questo meta e fondamentale per far funzionare @mMedia -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    
+
+  </head>
+
+  <body>
+
+    <div class="base"></div>
+
+    <diV class="container">
+
+
+
+      <div class="agreement">
+
+        <div class="parte-superiore">
+          <div class="avvertenza a1"><span>How To Play</span></div>
+            <div class="avvertenza a2"><span>Combine tiles of the same number in an attempt to create a tile with the value 2048.</span></div>
+            <div class="avvertenza a3"><span>Pressing the arrow keys or swiping across the game board will move all tiles in the direction of the key pressed/swipe. After all the tiles are done moving a new tile with the value of 2 or 4 will be created in a random empty cell.</span></div>
+            <div class="avvertenza a4"><span>Two tiles with the same number will merge when they collide to create a single tile with double the value.</span></div>
+            <div class="avvertenza a5">The game is over when there are no valid ways for you to move the tiles.</div>
+            <div class="avvertenza a6"><div>Use the arrow keys to play!</div></div>
+        </div>
+
+        <div class="parte-inferiore">
+            <div class="a7-1">
+              <img src="arrow-icons/arrow-left.avif" class="immagine">
+            </div>
+            <div class="a7-2">
+              <div class="a7-2-1">
+                <img src="arrow-icons/arrow-up.avif" class="immagine">
+              </div>
+              <div class="a7-2-2">
+                <img src="arrow-icons/arrow-down.avif" class="immagine">
+              </div>
+            </div>
+            <div class="a7-3">
+              <img src="arrow-icons/arrow-right.avif" class="immagine">
+            </div>
+        </div>
+
+        <div class="cont-2">
+          <button class="btn-understood">GO</button>
+        </div>
+
+      </div>
+
+
+
+      <header class="preview">
+        <div class="results">
+          <div class="score">Score : 0</div>
+          <div class="best-score">Best Score : 0</div>
+        </div>
+        <div class="cont-mewGame">
+          <button class="new-game">New Game</button>
+        </div>
+      </header>
+
+      <main class="main">
+
+        <div class="overlay"><span class="over">Game Over!</span></div>
+
+        <div class="main-square">
+          <div class="square">
+            <div class="s s1"></div>
+          </div>
+          <div class="square">
+            <div class="s s2"></div>
+          </div>
+          <div class="square">
+            <div class="s s3"></div>
+          </div>
+          <div class="square">
+            <div class="s s4"></div>
+          </div>
+          <div class="square">
+            <div class="s s5"></div>
+          </div>
+          <div class="square">
+            <div class="s s6"></div>
+          </div>
+          <div class="square">
+            <div class="s s7"></div>
+          </div>
+          <div class="square">
+            <div class="s s8"></div>
+          </div>
+          <div class="square">
+            <div class="s s9"></div>
+          </div>
+          <div class="square">
+            <div class="s s10"></div>
+          </div>
+          <div class="square">
+            <div class="s s11"></div>
+          </div>
+          <div class="square">
+            <div class="s s12"></div>
+          </div>
+          <div class="square">
+            <div class="s s13"></div>
+          </div>
+          <div class="square">
+            <div class="s s14"></div>
+          </div>
+          <div class="square">
+            <div class="s s15"></div>
+          </div>
+          <div class="square">
+            <div class="s s16"></div>
+          </div>
+        </div>
+  
+      </main>
+      
+    </diV>
+
+  </body>
+
+</html>
+
+
+
+
+
+
+<!-- OLD CODE -->
+
+
+<!-- <!DOCTYPE html>
+
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo-Clone-2048</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;1,300&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+     <script defer src="script.js"></script>
+  </head>
+  <body>
+       
+       <div class="base"></div>
+
+        <div class="agreement">
+            <div class="avvertenza a1"><span>How To Play</span></div>
+            <div class="avvertenza a2"><span>Combine tiles of the same number in an attempt to create a tile with the value 2048.</span></div>
+            <div class="avvertenza a3"><span>Pressing the arrow keys or swiping across the game board will move all tiles in the direction of the key pressed/swipe. After all the tiles are done moving a new tile with the value of 2 or 4 will be created in a random empty cell.</span></div>
+            <div class="avvertenza a4"><span>Two tiles with the same number will merge when they collide to create a single tile with double the value.</span></div>
+            <div class="avvertenza a5">The game is over when there are no valid ways for you to move the tiles.</div>
+            <div class="avvertenza a6"><div>Use the arrow keys to play!</div></div>
+            <div class="avvertenza a7">
+              <div class="a7-1">
+                <img src="arrow-icons/arrow-left.avif" class="immagine">
+              </div>
+              <div class="a7-2">
+                <div class="a7-2-1">
+                  <img src="arrow-icons/arrow-up.avif" class="immagine">
+                </div>
+                <div class="a7-2-2">
+                  <img src="arrow-icons/arrow-down.avif" class="immagine">
+                </div>
+              </div>
+              <div class="a7-3">
+                <img src="arrow-icons/arrow-right.avif" class="immagine">
+              </div>
+            </div>
+          <div class="cont-2">
+            <button class="btn-understood">GO</button>
+          </div>
+        </div>
+      
+          
+
+       <div class="container">
+
+        <header class="preview">
+          <div class="results">
+            <div class="score">Score : 0</div>
+            <div class="best-score">Best Score : 0</div>
+          </div>
+          <div class="cont-mewGame">
+            <button class="new-game">New Game</button>
+          </div>
+        </header>
+
+        <main class="main-square">
+          <div class="overlay"><span class="over">Game Over!</span></div>
+          <div class="square">
+            <div class="s s1"></div>
+          </div>
+          <div class="square">
+            <div class="s s2"></div>
+          </div>
+          <div class="square">
+            <div class="s s3"></div>
+          </div>
+          <div class="square">
+            <div class="s s4"></div>
+          </div>
+          <div class="square">
+            <div class="s s5"></div>
+          </div>
+          <div class="square">
+            <div class="s s6"></div>
+          </div>
+          <div class="square">
+            <div class="s s7"></div>
+          </div>
+          <div class="square">
+            <div class="s s8"></div>
+          </div>
+          <div class="square">
+            <div class="s s9"></div>
+          </div>
+          <div class="square">
+            <div class="s s10"></div>
+          </div>
+          <div class="square">
+            <div class="s s11"></div>
+          </div>
+          <div class="square">
+            <div class="s s12"></div>
+          </div>
+          <div class="square">
+            <div class="s s13"></div>
+          </div>
+          <div class="square">
+            <div class="s s14"></div>
+          </div>
+          <div class="square">
+            <div class="s s15"></div>
+          </div>
+          <div class="square">
+            <div class="s s16"></div>
+          </div>
+         </main>
+       </div>
+  </body>
+</html> -->
