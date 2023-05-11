@@ -26,6 +26,8 @@ body {
 
   margin: auto;
   margin-top: 25px;
+  
+  position: relative;
 }
 
 
@@ -39,7 +41,7 @@ body {
 .agreement {
   background-color: rgb(54, 54, 54);
   border-radius: 15px;
-  position: fixed;
+  position: absolute;
   width: 750px;
   height: 600px;
   padding-top: 15px;
@@ -353,6 +355,8 @@ body {
     width: 95vw;
     margin: auto;
     -webkit-tap-highlight-color: transparent;
+    
+    position: relative;
   }
 
   .main {
@@ -460,7 +464,7 @@ body {
 .agreement {
     background-color: rgb(54, 54, 54);
     border-radius: 15px;
-    position: fixed;
+    position: absolute;
     width: 93vw;
     height: 90%;
     padding-top: 15px;
