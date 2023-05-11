@@ -503,6 +503,8 @@ btn_under.addEventListener("click", function(){
    new_game.style.zIndex = "400";
    quadrante.style.zIndex = "400";
    interruttoreGenerale = true;
+   document.body.scrollTop = 0;
+   document.documentElement.scrollTop = 0;
 })
 
 new_game.addEventListener("touchstart",function(e){
