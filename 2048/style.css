@@ -1,6 +1,6 @@
 body {
   position: relative;
-  overscroll-behavior-y: contain;
+  overscroll-behavior: none;
   box-sizing: border-box;
   /* Rimuove il refresh della pagina quando scrollo down */
 } 
