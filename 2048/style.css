@@ -372,8 +372,8 @@ body {
 
   .overlay {
     position: absolute;
-    width: 94vw;
-    height: 94vw;
+    width: 96vw;
+    height: 96vw;
     background-color: white;
     opacity: 0.5;
     z-index: 100;
