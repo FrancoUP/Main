@@ -61,7 +61,7 @@ const time = document.querySelectorAll(".time");
     } else if(months >=  12 && months <  24) {
       el.innerHTML = `1 year experience`;
     } else if(months >= 24) {
-      el.innerHTML = `${months / 12} years experience`;
+      el.innerHTML = `${Math.round(months / 12)} years experience`;
     }
   })
 
