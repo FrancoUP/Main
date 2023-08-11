@@ -41,31 +41,8 @@ const nameProject = document.querySelectorAll(".name");
 
 const viewCodeBtn = document.querySelectorAll(".viewCodeBtn");
 
-const time = document.querySelectorAll(".time");
-
 
 //////////////////////////////////////////////////////////////////////////////////
-
-// get amount time from the start
-(function getTime() {
-
-  const startDate = new Date("October 01, 2022");
-  const newDate = new Date();
-  const tempo = newDate.getTime() - startDate.getTime();
-  const months  = Math.floor(tempo / (30 * 24 * 60 * 60 * 1000));
-
-  [...time].forEach( el => {
-
-    if(months < 12){
-      el.innerHTML = `${months} months experience`;
-    } else if(months >=  12 && months <  24) {
-      el.innerHTML = `1 year experience`;
-    } else if(months >= 24) {
-      el.innerHTML = `${Math.floor(months / 12)} years experience`;
-    }
-  })
-
-})();
 
 
 // Scrool the page to the top
