@@ -649,14 +649,12 @@ a {
   
   
   .box-project {
-    width: 100%;
     height: auto;
   }
   
   .box-img {
-    width: 100%;
+    width: 35vw;
     height: auto;
-    align-items: center;
   }
   
   .img {
@@ -977,6 +975,7 @@ a {
   
   .type {
     font-size: 4vw;
+    margin-bottom: 8px;
   }
 
   
