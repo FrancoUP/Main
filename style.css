@@ -200,6 +200,7 @@ object {
 
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: start;
 
   border-bottom-style: solid;
   border-bottom-width: 3px;
